@@ -49,15 +49,30 @@ CREATE TABLE Alocação(
 --  Crias os INSERTS das Tabelas
 
 INSERT INTO departamentos (nome)
-	values ('Exatas'),
-	('naturezas'),
-	('Humanas');
+	values ('medicina'),
+	('farmácia'),
+	('ciências biologicas'),
+	('tecnologia da informação'),
+	('engenharia'),
+	('cultural'),
+	('esportes')
+	;
 
 INSERT INTO curso (nome)
 	VALUES ('algebra'),
 	('Introducao a programacao'),
 	('quimica'),
-	('sociologia');
+	('sociologia'),
+	('filosofia'),
+	('música'),
+	('lógica de programação'),
+	('física'),
+	('geometria'),
+	('física quântica'),
+	('banco de dados'),
+	('banco de dados 2'),
+	('inteligencia artifical')
+	;
 
 INSERT INTO professor (nome,cpf,id_departamento)
 	VALUES ('matheus silva','11122233344', 3),
@@ -86,12 +101,39 @@ INSERT INTO professor (nome,cpf,id_departamento)
 	('suzana silva','09165615955', 2),             
 	('Tales Carvalho','72345695107', 2),           
 	('Thiago Carvalho','51045625856', 2),  
-	('Valeria Carvalho','45145696371', 2) 
-;
+	('Valeria Carvalho','45145696371', 2),
+	('rosangela neves','83420102312', 4),
+	('marcos dos santos','78965414785',4),
+	('janderson felipe','21356483407',4),
+	('jonathan salustiano','23498756743',4),
+	('felipe caldas', '89785245632', 4),
+	('felipe carreras', '12897346520', 4),
+	('yuri romão', '53426789142',5),
+	('bartô galeno', '56756438792',6),
+	('fernando santos','58484489648',6),
+	('fabio maranhão','70346252129',6),
+	('marcos filho','70856483417',6),
+	('boro baratheon', '70125456339',6),
+	('geraldo de rivia','11122255536',6),
+	('lucas angeelus','18798767789',7),
+	('leo santana','27896547321',7),
+	('paulo rubens','56423189773',7),
+	('oziel melo','85263941791',7),
+	('ronaldo alves','47358196223',7),
+        ('lucas moura','78145976238',7),   
+	('cristiano ronaldo','77700033352',7),
+	('maysa figueroa','19594875230',5),
+	('rhuann pontes','78412354875',5),
+	('raldney alves','38767788890',5),
+	('yuri gabriel','65677489376',5)
+        ;
 
 INSERT INTO alocação (id_professor,id_curso,dia_da_semana,horario)
-	VALUES (2, 1, 'quarta','19:00:00'),
-	(3, 2, 'sexta', '19:00:00');
+	VALUES (1,1, 'quarta','19:00:00'),
+	(2,1,'sexta', '19:00:00'),
+	(27,12,'quarta','10:00;00'),
+	(28,11,'quarta','12:00:00'),
+	(1,3,'quinta','10;00:00'),
 
 -- Cria um Index para a Coluna 'horario' na Tabela 'Alocação'
 
