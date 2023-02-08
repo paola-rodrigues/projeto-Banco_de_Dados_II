@@ -46,8 +46,10 @@ CREATE TABLE Alocação(
 	primary key (id_professor, id_curso, dia_da_semana, horario)
 );
 
---  Crias os INSERTS das Tabelas
 
+BEGIN; -- inicializar uma transação
+
+--  Crias os INSERTS das Tabelas
 INSERT INTO departamentos (nome)
 	values ('medicina'),
 	('farmácia'),
@@ -120,7 +122,7 @@ INSERT INTO professor (nome,cpf,id_departamento)
 	('paulo rubens','56423189773',7),
 	('oziel melo','85263941791',7),
 	('ronaldo alves','47358196223',7),
-        ('lucas moura','78145976238',7),   
+    ('lucas moura','78145976238',7),   
 	('cristiano ronaldo','77700033352',7),
 	('maysa figueroa','19594875230',5),
 	('rhuann pontes','78412354875',5),
@@ -134,6 +136,8 @@ INSERT INTO alocação (id_professor,id_curso,dia_da_semana,horario)
 	(27,12,'quarta','10:00;00'),
 	(28,11,'quarta','12:00:00'),
 	(1,3,'quinta','10;00:00'),
+; 
+COMMIT; -- Confirma todas as operações
 
 -- Cria um Index para a Coluna 'horario' na Tabela 'Alocação'
 
