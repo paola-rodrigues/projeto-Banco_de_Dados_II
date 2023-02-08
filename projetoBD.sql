@@ -2,6 +2,8 @@
 
 -- DROP DATABASE IF EXISTS "Projetobd";
 
+
+--  Cria o Banco de Dados
 CREATE DATABASE "Projetobd"
     WITH
     OWNER = postgres
@@ -12,6 +14,7 @@ CREATE DATABASE "Projetobd"
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
+--  Cria as Tabelas
 CREATE TABLE Departamentos(
 id_departamento SERIAL PRIMARY KEY,
 nome varchar(45) not null
@@ -30,6 +33,7 @@ id_departamento int,
 foreign key(id_departamento) references departamentos(id_departamento)
 );
 
+-- Cria a ENUM para usar na tabela Alocação OBS: Particularidade do PostgreSQL
 CREATE TYPE enum_dia_da_semana AS ENUM ('segunda','terca','quarta','quinta','sexta','sabado','domingo');
 
 CREATE TABLE Alocação(
@@ -42,7 +46,7 @@ foreign key(id_curso) references curso(id_curso),
 primary key (id_professor, id_curso, dia_da_semana, horario)
 );
 
---  INSERTS
+--  Crias os INSERTS das Tabelas
 
 INSERT INTO departamentos (nome)
 values ('Exatas'),
@@ -64,10 +68,14 @@ INSERT INTO alocação (id_professor,id_curso,dia_da_semana,horario)
 VALUES (2, 1, 'quarta','19:00:00'),
 (3, 2, 'sexta', '19:00:00');
 
--- Index
+-- Cria um Index para a Coluna 'horario' na Tabela 'Alocação'
 
 CREATE INDEX alocação_horario_index ON alocação (horario)
 
+-- Cria uma View para a Tabela professor
+
+CREATE VIEW view_professor AS SELECT * FROM professor;
+
 -- Teste
 
-SELECT * FROM alocação;
+SELECT nome, cpf FROM view_professor;
