@@ -76,6 +76,18 @@ CREATE INDEX alocação_horario_index ON alocação (horario)
 
 CREATE VIEW view_professor AS SELECT * FROM professor;
 
+-- Cria uma Usuário com autorização apenas de ver os cursos
+
+CREATE USER estudante WITH PASSWORD 'estudante';
+GRANT SELECT ON curso TO estudante;
+
 -- Teste
 
+-- Muda para o usuário estudante
+SET ROLE 'estudante';
+
+-- O SELECT não funciona com uma tabela não autorizada
 SELECT nome, cpf FROM view_professor;
+
+-- O SELECT funciona com uma tabela autorizada
+SELECT * FROM curso;
