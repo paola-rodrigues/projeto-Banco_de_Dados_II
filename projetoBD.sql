@@ -122,13 +122,13 @@ INSERT INTO professor (nome,cpf,id_departamento)
 	('paulo rubens','56423189773',7),
 	('oziel melo','85263941791',7),
 	('ronaldo alves','47358196223',7),
-    ('lucas moura','78145976238',7),   
+	('lucas moura','78145976238',7),   
 	('cristiano ronaldo','77700033352',7),
 	('maysa figueroa','19594875230',5),
 	('rhuann pontes','78412354875',5),
 	('raldney alves','38767788890',5),
 	('yuri gabriel','65677489376',5)
-        ;
+;
 
 INSERT INTO alocação (id_professor,id_curso,dia_da_semana,horario)
 	VALUES (1,1, 'quarta','19:00:00'),
@@ -159,6 +159,7 @@ SET ROLE 'estudante';
 
 -- O SELECT não funciona com uma tabela não autorizada
 SELECT nome, cpf FROM view_professor;
+
 
 -- O SELECT funciona com uma tabela autorizada
 SELECT * FROM curso;
