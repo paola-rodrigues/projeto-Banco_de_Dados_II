@@ -36,7 +36,7 @@ CREATE TABLE professor(
 -- Cria a ENUM para usar na tabela Alocação OBS: Particularidade do PostgreSQL
 CREATE TYPE enum_dia_da_semana AS ENUM ('segunda','terca','quarta','quinta','sexta','sabado','domingo');
 
-CREATE TABLE Alocação(
+CREATE TABLE Alocacao(
 	id_professor SERIAL,
 	id_curso SERIAL,
 	dia_da_semana enum_dia_da_semana,
@@ -130,18 +130,34 @@ INSERT INTO professor (nome,cpf,id_departamento)
 	('yuri gabriel','65677489376',5)
 ;
 
-INSERT INTO alocação (id_professor,id_curso,dia_da_semana,horario)
+INSERT INTO alocacao (id_professor,id_curso,dia_da_semana,horario)
 	VALUES (1,1, 'quarta','19:00:00'),
 	(2,1,'sexta', '19:00:00'),
 	(27,12,'quarta','10:00;00'),
 	(28,11,'quarta','12:00:00'),
 	(1,3,'quinta','10;00:00'),
+	(3,4,'quinta','12:00:00'),
+	(3,5,'segunda','08:00:00'),
+	(3,6,'terca','10:30:00'),
+	(5,3,'quinta','12:00:00'),
+	(5,4,'sexta','08:00:00'),
+	(5,5,'segunda','17:00:00'),
+	(48,1,'quarta','12:00:00'),
+	(48,8,'quarta','14:00:00'),
+	(48,9,'quarta','17:00:00'),
+	(41,4,'quinta','13:00:00'),
+	(41,5,'quinta','16:00:00'),
+	(41,8,'sexta','19:00:00'),
+	(9,3,'quinta','08:00:00'),
+	(9,4,'terca','13:00:00'),
+	(9,8,'quarta','17:00:00')
+	
 ; 
 COMMIT; -- Confirma todas as operações
 
--- Cria um Index para a Coluna 'horario' na Tabela 'Alocação'
+-- Cria um Index para a Coluna 'horario' na Tabela 'Alocacao'
 
-CREATE INDEX alocação_horario_index ON alocação (horario)
+CREATE INDEX alocação_horario_index ON alocacao (horario)
 
 -- Cria uma View para a Tabela professor
 
