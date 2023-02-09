@@ -47,6 +47,7 @@ CREATE TABLE Alocacao(
 );
 
 
+SAVEPOINT ponto_de_backup; -- Criando um ponto de salvamento para backup
 BEGIN; -- inicializar uma transação
 
 --  Crias os INSERTS das Tabelas
@@ -151,8 +152,8 @@ INSERT INTO alocacao (id_professor,id_curso,dia_da_semana,horario)
 	(9,3,'quinta','08:00:00'),
 	(9,4,'terca','13:00:00'),
 	(9,8,'quarta','17:00:00')
-	
 ; 
+EXCEPTION
 COMMIT; -- Confirma todas as operações
 
 -- Cria um Index para a Coluna 'horario' na Tabela 'Alocacao'
