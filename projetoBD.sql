@@ -33,13 +33,11 @@ CREATE TABLE professor(
 	foreign key(id_departamento) references departamentos(id_departamento)
 );
 
--- Cria a ENUM para usar na tabela Alocação OBS: Particularidade do PostgreSQL
-CREATE TYPE enum_dia_da_semana AS ENUM ('segunda','terca','quarta','quinta','sexta','sabado','domingo');
 
 CREATE TABLE Alocacao(
-	id_professor SERIAL,
-	id_curso SERIAL,
-	dia_da_semana enum_dia_da_semana,
+	id_professor INT,
+	id_curso INT,
+	dia_da_semana varchar(45) not null,
 	horario time not null,
 	foreign key(id_professor) references professor(id_professor),
 	foreign key(id_curso) references curso(id_curso),
@@ -47,8 +45,8 @@ CREATE TABLE Alocacao(
 );
 
 
-SAVEPOINT ponto_de_backup; -- Criando um ponto de salvamento para backup
 BEGIN; -- inicializar uma transação
+SAVEPOINT ponto_de_backup; -- Criando um ponto de salvamento para backup
 
 --  Crias os INSERTS das Tabelas
 INSERT INTO departamentos (nome)
@@ -134,9 +132,9 @@ INSERT INTO professor (nome,cpf,id_departamento)
 INSERT INTO alocacao (id_professor,id_curso,dia_da_semana,horario)
 	VALUES (1,1, 'quarta','19:00:00'),
 	(2,1,'sexta', '19:00:00'),
-	(27,12,'quarta','10:00;00'),
+	(27,12,'quarta','10:00:00'),
 	(28,11,'quarta','12:00:00'),
-	(1,3,'quinta','10;00:00'),
+	(1,3,'quinta','10:00:00'),
 	(3,4,'quinta','12:00:00'),
 	(3,5,'segunda','08:00:00'),
 	(3,6,'terca','10:30:00'),
@@ -153,7 +151,6 @@ INSERT INTO alocacao (id_professor,id_curso,dia_da_semana,horario)
 	(9,4,'terca','13:00:00'),
 	(9,8,'quarta','17:00:00')
 ; 
-EXCEPTION
 COMMIT; -- Confirma todas as operações
 
 -- Cria um Index para a Coluna 'horario' na Tabela 'Alocacao'
@@ -179,4 +176,4 @@ SELECT nome, cpf FROM view_professor;
 
 
 -- O SELECT funciona com uma tabela autorizada
-SELECT * FROM curso;
+SELECT * FROM alocacao;
